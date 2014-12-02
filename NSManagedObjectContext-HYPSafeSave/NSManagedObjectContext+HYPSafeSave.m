@@ -20,12 +20,12 @@
 
         if (wasMainThread) {
             if (![currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"REMA_MAIN_THREAD_SAVING_EXCEPTION"
+                [NSException raise:@"HYP_MAIN_THREAD_SAVING_EXCEPTION"
                             format:@"Main context saved in a background thread."];
             }
         } else {
             if ([currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"REMA_BACKGROUND_THREAD_SAVING_EXCEPTION"
+                [NSException raise:@"HYP_BACKGROUND_THREAD_SAVING_EXCEPTION"
                             format:@"Background context saved in a main thread."];
             }
         }

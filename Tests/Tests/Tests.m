@@ -19,7 +19,16 @@
     [ANDYDataManager setModelName:@"Model"];
 }
 
-- (void)testSafeSaveCorrectThread
+- (void)testMainThreadCorrectSave
+{
+    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
+
+    NSError *error = nil;
+    XCTAssertNoThrow([context hyp_save:&error]);
+    if (error) NSLog(@"error: %@", error);
+}
+
+- (void)testBackgroundThreadCorrectSave
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
 
@@ -28,14 +37,27 @@
         NSError *error = nil;
         XCTAssertNoThrow([context hyp_save:&error]);
         if (error) NSLog(@"error: %@", error);
-
         [expectation fulfill];
+
     }];
 
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
 }
 
-- (void)testSafeSaveWrongThread
+- (void)testMainThreadSavedInDifferentThread
+{
+    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+
+        NSError *error = nil;
+        XCTAssertNoThrow([context hyp_save:&error]);
+        if (error) NSLog(@"error: %@", error);
+
+    });
+}
+
+- (void)testBackgroundThreadSavedInMainThread
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
 
@@ -47,8 +69,8 @@
                                          NSException,
                                          HYPSafeSaveBackgroundThreadSavedInMainThreadException);
             if (error) NSLog(@"error: %@", error);
-
             [expectation fulfill];
+
         });
     }];
 

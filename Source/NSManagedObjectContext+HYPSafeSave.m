@@ -12,9 +12,14 @@
         BOOL isMainThreadType = (self.concurrencyType == NSMainQueueConcurrencyType);
 
         __block NSThread *currentThread = nil;
-        [self performBlockAndWait:^{
+
+        if ([[NSThread currentThread] isEqual:[NSThread mainThread]]) {
+            [self performBlockAndWait:^{
+                currentThread = [NSThread currentThread];
+            }];
+        } else {
             currentThread = [NSThread currentThread];
-        }];
+        }
 
         if (isMainThreadType) {
             BOOL currentThreadIsDifferentThanMain = (![currentThread isEqual:[NSThread mainThread]]);

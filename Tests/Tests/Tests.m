@@ -1,8 +1,14 @@
-//
-//  Tests.m
-//
-
 @import XCTest;
+
+#import "ANDYDataManager.h"
+
+#import "NSManagedObjectContext+HYPSafeSave.h"
+
+@interface ANDYDataManager (Private)
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+
+@end
 
 @interface Tests : XCTestCase
 
@@ -10,24 +16,90 @@
 
 @implementation Tests
 
-- (void)setUp
++ (void)setUp
 {
     [super setUp];
 
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    [ANDYDataManager setModelBundle:[NSBundle bundleForClass:[self class]]];
+
+    [ANDYDataManager setUpStackWithInMemoryStore];
 }
 
-- (void)tearDown
+- (void)testConfinementContext
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+    context.persistentStoreCoordinator = [[ANDYDataManager sharedManager] persistentStoreCoordinator];
 
-    [super tearDown];
+    NSError *error = nil;
+    XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+                                 NSException,
+                                 HYPSafeSaveNotRecommendedConcurrencyTypeException);
+    if (error) NSLog(@"error: %@", error);
 }
 
-- (void)testSampleTest
+- (void)testMainThreadCorrectSave
 {
-    NSArray *array;
-    XCTAssertNil(array);
+    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
+
+    NSError *error = nil;
+    XCTAssertNoThrow([context hyp_save:&error]);
+    if (error) NSLog(@"error: %@", error);
+}
+
+- (void)testBackgroundThreadCorrectSave
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
+
+    [ANDYDataManager performInBackgroundContext:^(NSManagedObjectContext *context) {
+
+        NSError *error = nil;
+        XCTAssertNoThrow([context hyp_save:&error]);
+        if (error) NSLog(@"error: %@", error);
+        [expectation fulfill];
+
+    }];
+
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
+}
+
+- (void)testMainThreadSavedInDifferentThread
+{
+    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+
+        NSError *error = nil;
+        XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+                                     NSException,
+                                     HYPSafeSaveMainThreadSavedInDifferentThreadException);
+        if (error) NSLog(@"error: %@", error);
+        [expectation fulfill];
+
+    });
+
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
+}
+
+- (void)testBackgroundThreadSavedInMainThread
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
+
+    [ANDYDataManager performInBackgroundContext:^(NSManagedObjectContext *context) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            NSError *error = nil;
+            XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+                                         NSException,
+                                         HYPSafeSaveBackgroundThreadSavedInMainThreadException);
+            if (error) NSLog(@"error: %@", error);
+            [expectation fulfill];
+
+        });
+    }];
+
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
 }
 
 @end

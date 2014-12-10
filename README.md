@@ -1,0 +1,27 @@
+# NSManagedObjectContext-HYPSafeSave
+
+[![CI Status](http://img.shields.io/travis/hyperoslo/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](https://travis-ci.org/hyperoslo/NSManagedObjectContext-HYPSafeSave)
+[![Version](https://img.shields.io/cocoapods/v/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](http://cocoadocs.org/docsets/NSManagedObjectContext-HYPSafeSave)
+[![License](https://img.shields.io/cocoapods/l/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](http://cocoadocs.org/docsets/NSManagedObjectContext-HYPSafeSave)
+[![Platform](https://img.shields.io/cocoapods/p/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](http://cocoadocs.org/docsets/NSManagedObjectContext-HYPSafeSave)
+
+## Usage
+
+```objc
+- (BOOL)hyp_save:(NSError * __autoreleasing *)error;
+```
+
+## Installation
+
+**NSManagedObjectContext-HYPSafeSave** is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+`pod 'NSManagedObjectContext-HYPSafeSave'`
+
+## Author
+
+Hyper AS, teknologi@hyper.no
+
+## License
+
+**NSManagedObjectContext-HYPSafeSave** is available under the MIT license. See the LICENSE file for more info.

@@ -1,18 +1,10 @@
-//
-//  NSManagedObjectContext+HYPSafeSave.m
-//  Mine Ansatte
-//
-//  Created by Elvis Nunez on 8/19/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 #import "NSManagedObjectContext+HYPSafeSave.h"
 
 @implementation NSManagedObjectContext (HYPSafeSave)
 
-- (BOOL)hyp_save:(NSError **)error
+- (BOOL)hyp_save:(NSError * __autoreleasing *)error
 {
-#if DEBUG
+#if TARGET_IPHONE_SIMULATOR
     BOOL wasMainThread = [NSThread isMainThread];
 
     [self performBlockAndWait:^{
@@ -20,12 +12,12 @@
 
         if (wasMainThread) {
             if (![currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"HYP_MAIN_THREAD_SAVING_EXCEPTION"
+                [NSException raise:@"HYPSafeSave_MAIN_THREAD_SAVING_EXCEPTION"
                             format:@"Main context saved in a background thread."];
             }
         } else {
             if ([currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"HYP_BACKGROUND_THREAD_SAVING_EXCEPTION"
+                [NSException raise:@"HYPSafeSave_BACKGROUND_THREAD_SAVING_EXCEPTION"
                             format:@"Background context saved in a main thread."];
             }
         }

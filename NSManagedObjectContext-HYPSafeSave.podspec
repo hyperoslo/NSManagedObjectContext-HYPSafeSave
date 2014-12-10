@@ -2,6 +2,13 @@ Pod::Spec.new do |s|
 s.name             = "NSManagedObjectContext-HYPSafeSave"
 s.version          = "0.1"
 s.summary          = "Warns you of unsafe NSManagedObjectContext saves"
+s.description      = <<-DESC
+When doing `[context save:&error]` warns you about:
+
+* Usage of confinement contexts
+* Main context saved in a background thread
+* Background context saved in a main thread
+DESC
 s.homepage         = "https://github.com/hyperoslo/NSManagedObjectContext-HYPSafeSave"
 s.license          = 'MIT'
 s.author           = { "Hyper AS" => "teknologi@hyper.no" }

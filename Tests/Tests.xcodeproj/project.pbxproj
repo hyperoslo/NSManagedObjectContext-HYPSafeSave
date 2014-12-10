@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14AE982B1A3889330080881B /* Tests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AE98291A3889330080881B /* Tests.xcdatamodeld */; };
 		14B564731A06D87B00342CDA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 14B564721A06D87B00342CDA /* .travis.yml */; };
 		14C4182E1A01919C00636FD6 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C4182D1A01919C00636FD6 /* Tests.m */; };
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
 		14C4183E1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */; };
 		14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */; };
-		14F97FE81A384FE800AFFE75 /* Tests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */; };
 		69FE7B9D25E5595817B54DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EC368CE87BEA62CA60A293 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14AE982A1A3889330080881B /* Tests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tests.xcdatamodel; sourceTree = "<group>"; };
 		14B564721A06D87B00342CDA /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		14C418261A01919C00636FD6 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C4182C1A01919C00636FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,7 +28,6 @@
 		14C4183B1A019A1500636FD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+HYPSafeSave.h"; sourceTree = "<group>"; };
 		14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+HYPSafeSave.m"; sourceTree = "<group>"; };
-		14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tests.xcdatamodel; sourceTree = "<group>"; };
 		49AA363B24B4EEE73E9A3FB7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77EC368CE87BEA62CA60A293 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD5AB685E5CBBB35F6B4993 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		14C4182A1A01919C00636FD6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				14AE98291A3889330080881B /* Tests.xcdatamodeld */,
 				14C4182D1A01919C00636FD6 /* Tests.m */,
 				14C4182B1A01919C00636FD6 /* Supporting Files */,
 			);
@@ -87,7 +88,6 @@
 			children = (
 				14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */,
 				14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */,
-				14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */,
 			);
 			name = Source;
 			path = ../Source;
@@ -226,9 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F97FE81A384FE800AFFE75 /* Tests.xcdatamodeld in Sources */,
 				14C4182E1A01919C00636FD6 /* Tests.m in Sources */,
 				14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */,
+				14AE982B1A3889330080881B /* Tests.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,12 +375,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */ = {
+		14AE98291A3889330080881B /* Tests.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */,
+				14AE982A1A3889330080881B /* Tests.xcdatamodel */,
 			);
-			currentVersion = 14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */;
+			currentVersion = 14AE982A1A3889330080881B /* Tests.xcdatamodel */;
 			path = Tests.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

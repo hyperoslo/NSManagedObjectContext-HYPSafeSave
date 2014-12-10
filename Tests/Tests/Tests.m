@@ -4,12 +4,6 @@
 
 #import "NSManagedObjectContext+HYPSafeSave.h"
 
-@interface ANDYDataManager (Private)
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
-
-@end
-
 @interface Tests : XCTestCase
 
 @end

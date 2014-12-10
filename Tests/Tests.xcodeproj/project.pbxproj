@@ -11,8 +11,11 @@
 		14C4182E1A01919C00636FD6 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C4182D1A01919C00636FD6 /* Tests.m */; };
 		14C4183C1A019A1500636FD6 /* CONTRIBUTING.md in Sources */ = {isa = PBXBuildFile; fileRef = 14C418381A019A1500636FD6 /* CONTRIBUTING.md */; };
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
-		14C4183E1A019A1500636FD6 /* PODNAME.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* PODNAME.podspec */; };
+		14C4183E1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */; };
 		14C4183F1A019A1500636FD6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 14C4183B1A019A1500636FD6 /* README.md */; };
+		14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */; };
+		14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */; };
+		69FE7B9D25E5595817B54DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EC368CE87BEA62CA60A293 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +25,14 @@
 		14C4182D1A01919C00636FD6 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		14C418381A019A1500636FD6 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
 		14C418391A019A1500636FD6 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
-		14C4183A1A019A1500636FD6 /* PODNAME.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PODNAME.podspec; path = ../PODNAME.podspec; sourceTree = "<group>"; };
+		14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "NSManagedObjectContext-HYPSafeSave.podspec"; path = "../NSManagedObjectContext-HYPSafeSave.podspec"; sourceTree = "<group>"; };
 		14C4183B1A019A1500636FD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+HYPSafeSave.h"; sourceTree = "<group>"; };
+		14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+HYPSafeSave.m"; sourceTree = "<group>"; };
+		14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		49AA363B24B4EEE73E9A3FB7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		77EC368CE87BEA62CA60A293 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD5AB685E5CBBB35F6B4993 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69FE7B9D25E5595817B54DB2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +54,8 @@
 				14C418371A01974300636FD6 /* Source */,
 				14C4182A1A01919C00636FD6 /* Tests */,
 				14C4181C1A01919C00636FD6 /* Products */,
+				802A2C45B69F71C3946642A1 /* Pods */,
+				251B8E913AB5703E186EA516 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +87,9 @@
 		14C418371A01974300636FD6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */,
+				14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */,
+				14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */,
 			);
 			name = Source;
 			path = ../Source;
@@ -86,10 +101,27 @@
 				14B564721A06D87B00342CDA /* .travis.yml */,
 				14C418381A019A1500636FD6 /* CONTRIBUTING.md */,
 				14C418391A019A1500636FD6 /* LICENSE.md */,
-				14C4183A1A019A1500636FD6 /* PODNAME.podspec */,
+				14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */,
 				14C4183B1A019A1500636FD6 /* README.md */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		251B8E913AB5703E186EA516 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77EC368CE87BEA62CA60A293 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		802A2C45B69F71C3946642A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBD5AB685E5CBBB35F6B4993 /* Pods.debug.xcconfig */,
+				49AA363B24B4EEE73E9A3FB7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14C418341A01919C00636FD6 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				CFA5C5E4C4FC9986B81CCF30 /* Check Pods Manifest.lock */,
 				14C418221A01919C00636FD6 /* Sources */,
 				14C418231A01919C00636FD6 /* Frameworks */,
 				14C418241A01919C00636FD6 /* Resources */,
+				4C64FD68CC838AC39BBD87DF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,11 +184,44 @@
 			files = (
 				14B564731A06D87B00342CDA /* .travis.yml in Resources */,
 				14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */,
-				14C4183E1A019A1500636FD6 /* PODNAME.podspec in Resources */,
+				14C4183E1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C64FD68CC838AC39BBD87DF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFA5C5E4C4FC9986B81CCF30 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14C418221A01919C00636FD6 /* Sources */ = {
@@ -163,7 +230,9 @@
 			files = (
 				14C4183F1A019A1500636FD6 /* README.md in Sources */,
 				14C4183C1A019A1500636FD6 /* CONTRIBUTING.md in Sources */,
+				14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */,
 				14C4182E1A01919C00636FD6 /* Tests.m in Sources */,
+				14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +325,7 @@
 		};
 		14C418351A01919C00636FD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBD5AB685E5CBBB35F6B4993 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -273,6 +343,7 @@
 		};
 		14C418361A01919C00636FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49AA363B24B4EEE73E9A3FB7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -306,6 +377,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */,
+			);
+			currentVersion = 14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 14C418121A01919C00636FD6 /* Project object */;
 }

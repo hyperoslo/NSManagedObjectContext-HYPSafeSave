@@ -5,23 +5,30 @@
 - (BOOL)hyp_save:(NSError * __autoreleasing *)error
 {
 #if TARGET_IPHONE_SIMULATOR
-    BOOL wasMainThread = [NSThread isMainThread];
+    if (self.concurrencyType == NSConfinementConcurrencyType) {
+        [NSException raise:HYPSafeSaveNotRecommendedConcurrencyTypeException
+                    format:@"This NSManagedObjectContext is using a not recommended concurrencyType, please choose NSPrivateQueueConcurrencyType or NSMainQueueConcurrencyType."];
+    } else {
+        BOOL isMainThreadType = (self.concurrencyType == NSMainQueueConcurrencyType);
 
-    [self performBlockAndWait:^{
-        NSThread *currentThread = [NSThread currentThread];
+        __block NSThread *currentThread = nil;
+        [self performBlockAndWait:^{
+            currentThread = [NSThread currentThread];
+        }];
 
-        if (wasMainThread) {
-            if (![currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"HYPSafeSave_MAIN_THREAD_SAVING_EXCEPTION"
+        if (isMainThreadType) {
+            BOOL currentThreadIsDifferentThanMain = (![currentThread isEqual:[NSThread mainThread]]);
+            if (currentThreadIsDifferentThanMain) {
+                [NSException raise:HYPSafeSaveMainThreadSavedInDifferentThreadException
                             format:@"Main context saved in a background thread."];
             }
         } else {
             if ([currentThread isEqual:[NSThread mainThread]]) {
-                [NSException raise:@"HYPSafeSave_BACKGROUND_THREAD_SAVING_EXCEPTION"
+                [NSException raise:HYPSafeSaveBackgroundThreadSavedInMainThreadException
                             format:@"Background context saved in a main thread."];
             }
         }
-    }];
+    }
 #endif
     return [self save:error];
 }

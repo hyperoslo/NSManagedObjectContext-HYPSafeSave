@@ -12,7 +12,7 @@
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
 		14C4183E1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */; };
 		14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */; };
-		14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */; };
+		14F97FE81A384FE800AFFE75 /* Tests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */; };
 		69FE7B9D25E5595817B54DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EC368CE87BEA62CA60A293 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +27,7 @@
 		14C4183B1A019A1500636FD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+HYPSafeSave.h"; sourceTree = "<group>"; };
 		14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+HYPSafeSave.m"; sourceTree = "<group>"; };
-		14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tests.xcdatamodel; sourceTree = "<group>"; };
 		49AA363B24B4EEE73E9A3FB7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77EC368CE87BEA62CA60A293 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD5AB685E5CBBB35F6B4993 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			children = (
 				14F97FE31A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.h */,
 				14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */,
-				14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */,
+				14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */,
 			);
 			name = Source;
 			path = ../Source;
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */,
+				14F97FE81A384FE800AFFE75 /* Tests.xcdatamodeld in Sources */,
 				14C4182E1A01919C00636FD6 /* Tests.m in Sources */,
 				14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */,
 			);
@@ -375,13 +375,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */ = {
+		14F97FE61A384FE800AFFE75 /* Tests.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */,
+				14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */,
 			);
-			currentVersion = 14F97FE71A384FE800AFFE75 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 14F97FE71A384FE800AFFE75 /* Tests.xcdatamodel */;
+			path = Tests.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

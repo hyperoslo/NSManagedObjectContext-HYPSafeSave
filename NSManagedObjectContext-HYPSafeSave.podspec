@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name             = "NSManagedObjectContext-HYPSafeSave"
 s.version          = "0.1"
-s.summary          = "Helps you be aware of NSManagedObjectContext thread safe savings"
+s.summary          = "Warns you of unsafe NSManagedObjectContext saves"
 s.homepage         = "https://github.com/hyperoslo/NSManagedObjectContext-HYPSafeSave"
 s.license          = 'MIT'
 s.author           = { "Hyper AS" => "teknologi@hyper.no" }

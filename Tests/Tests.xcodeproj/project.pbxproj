@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		14B564731A06D87B00342CDA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 14B564721A06D87B00342CDA /* .travis.yml */; };
 		14C4182E1A01919C00636FD6 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C4182D1A01919C00636FD6 /* Tests.m */; };
-		14C4183C1A019A1500636FD6 /* CONTRIBUTING.md in Sources */ = {isa = PBXBuildFile; fileRef = 14C418381A019A1500636FD6 /* CONTRIBUTING.md */; };
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
 		14C4183E1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* NSManagedObjectContext-HYPSafeSave.podspec */; };
-		14C4183F1A019A1500636FD6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 14C4183B1A019A1500636FD6 /* README.md */; };
 		14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE41A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m */; };
 		14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14F97FE61A384FE800AFFE75 /* Model.xcdatamodeld */; };
 		69FE7B9D25E5595817B54DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EC368CE87BEA62CA60A293 /* libPods.a */; };
@@ -228,8 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14C4183F1A019A1500636FD6 /* README.md in Sources */,
-				14C4183C1A019A1500636FD6 /* CONTRIBUTING.md in Sources */,
 				14F97FE81A384FE800AFFE75 /* Model.xcdatamodeld in Sources */,
 				14C4182E1A01919C00636FD6 /* Tests.m in Sources */,
 				14F97FE51A384EC900AFFE75 /* NSManagedObjectContext+HYPSafeSave.m in Sources */,

@@ -4,7 +4,7 @@
 
 - (BOOL)hyp_save:(NSError * __autoreleasing *)error
 {
-    //#if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
     if (self.concurrencyType == NSConfinementConcurrencyType) {
         [NSException raise:HYPSafeSaveNotRecommendedConcurrencyTypeException
                     format:@"This NSManagedObjectContext is using a not recommended concurrencyType, please choose NSPrivateQueueConcurrencyType or NSMainQueueConcurrencyType."];
@@ -34,7 +34,7 @@
             }
         }
     }
-    //#endif
+#endif
     return [self save:error];
 }
 

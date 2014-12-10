@@ -244,16 +244,6 @@
     }];
 }
 
-+ (NSManagedObjectContext *)confinementContext
-{
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-    context.persistentStoreCoordinator = [[self sharedManager] persistentStoreCoordinator];
-    context.undoManager = nil;
-    context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
-
-    return context;
-}
-
 + (NSManagedObjectContext *)backgroundContext
 {
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];

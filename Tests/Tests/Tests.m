@@ -4,6 +4,12 @@
 
 #import "NSManagedObjectContext+HYPSafeSave.h"
 
+@interface ANDYDataManager (Private)
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+
+@end
+
 @interface Tests : XCTestCase
 
 @end
@@ -21,7 +27,8 @@
 
 - (void)testConfinementContext
 {
-    NSManagedObjectContext *context = [ANDYDataManager confinementContext];
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+    context.persistentStoreCoordinator = [[ANDYDataManager sharedManager] persistentStoreCoordinator];
 
     NSError *error = nil;
     XCTAssertThrowsSpecificNamed([context hyp_save:&error],

@@ -16,7 +16,7 @@
 
     [ANDYDataManager setModelBundle:[NSBundle bundleForClass:[self class]]];
 
-    [ANDYDataManager setModelName:@"Model"];
+    [ANDYDataManager setUpStackWithInMemoryStore];
 }
 
 - (void)testConfinementContext

@@ -5,6 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](http://cocoadocs.org/docsets/NSManagedObjectContext-HYPSafeSave)
 [![Platform](https://img.shields.io/cocoapods/p/NSManagedObjectContext-HYPSafeSave.svg?style=flat)](http://cocoadocs.org/docsets/NSManagedObjectContext-HYPSafeSave)
 
+When doing `[context save:&error]` warns you about:
+
+- Main context saved in a background thread
+- Background context saved in a main thread
+
 ## Usage
 
 ```objc

@@ -48,13 +48,20 @@
 {
     NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
 
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
         NSError *error = nil;
-        XCTAssertNoThrow([context hyp_save:&error]);
+        XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+                                     NSException,
+                                     HYPSafeSaveMainThreadSavedInDifferentThreadException);
         if (error) NSLog(@"error: %@", error);
+        [expectation fulfill];
 
     });
+
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
 }
 
 - (void)testBackgroundThreadSavedInMainThread

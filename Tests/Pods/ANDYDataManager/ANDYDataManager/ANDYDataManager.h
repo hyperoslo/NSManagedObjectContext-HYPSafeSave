@@ -28,6 +28,8 @@
  * performant background operation.
  * \returns A background NSManagedObjectContext.
  */
+
++ (NSManagedObjectContext *)confinementContext;
 + (NSManagedObjectContext *)backgroundContext;
 
 /*!

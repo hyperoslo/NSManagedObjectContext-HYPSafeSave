@@ -27,8 +27,7 @@
 
 - (void)testConfinementContext
 {
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-    context.persistentStoreCoordinator = [[ANDYDataManager sharedManager] persistentStoreCoordinator];
+    NSManagedObjectContext *context = [ANDYDataManager confinementContext];
 
     NSError *error = nil;
     XCTAssertThrowsSpecificNamed([context hyp_save:&error],

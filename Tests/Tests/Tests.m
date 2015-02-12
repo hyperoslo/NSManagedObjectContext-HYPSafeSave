@@ -1,10 +1,10 @@
 @import XCTest;
 
-#import "ANDYDataManager.h"
+#import "DATAStack.h"
 
 #import "NSManagedObjectContext+HYPSafeSave.h"
 
-@interface ANDYDataManager (Private)
+@interface DATAStack (Private)
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 
@@ -16,19 +16,21 @@
 
 @implementation Tests
 
-+ (void)setUp
+- (DATAStack *)dataStack
 {
-    [super setUp];
+    DATAStack *dataStack = [[DATAStack alloc] initWithModelName:@"Tests"
+                                                         bundle:[NSBundle bundleForClass:[self class]]
+                                                      storeType:DATAStackInMemoryStoreType];
 
-    [ANDYDataManager setModelBundle:[NSBundle bundleForClass:[self class]]];
-
-    [ANDYDataManager setUpStackWithInMemoryStore];
+    return dataStack;
 }
 
 - (void)testConfinementContext
 {
+    DATAStack *dataStack = [self dataStack];
+
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-    context.persistentStoreCoordinator = [[ANDYDataManager sharedManager] persistentStoreCoordinator];
+    context.persistentStoreCoordinator = [dataStack persistentStoreCoordinator];
 
     NSError *error = nil;
     XCTAssertThrowsSpecificNamed([context hyp_save:&error],
@@ -39,10 +41,10 @@
 
 - (void)testMainThreadCorrectSave
 {
-    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
+    DATAStack *dataStack = [self dataStack];
 
     NSError *error = nil;
-    XCTAssertNoThrow([context hyp_save:&error]);
+    XCTAssertNoThrow([dataStack.mainContext hyp_save:&error]);
     if (error) NSLog(@"error: %@", error);
 }
 
@@ -50,13 +52,13 @@
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
 
-    [ANDYDataManager performInBackgroundContext:^(NSManagedObjectContext *context) {
+    DATAStack *dataStack = [self dataStack];
 
+    [dataStack performInNewBackgroundContext:^(NSManagedObjectContext *backgroundContext) {
         NSError *error = nil;
-        XCTAssertNoThrow([context hyp_save:&error]);
+        XCTAssertNoThrow([backgroundContext hyp_save:&error]);
         if (error) NSLog(@"error: %@", error);
         [expectation fulfill];
-
     }];
 
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
@@ -64,19 +66,17 @@
 
 - (void)testMainThreadSavedInDifferentThread
 {
-    NSManagedObjectContext *context = [[ANDYDataManager sharedManager] mainContext];
-
     XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    DATAStack *dataStack = [self dataStack];
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSError *error = nil;
-        XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+        XCTAssertThrowsSpecificNamed([dataStack.mainContext hyp_save:&error],
                                      NSException,
                                      HYPSafeSaveMainThreadSavedInDifferentThreadException);
         if (error) NSLog(@"error: %@", error);
         [expectation fulfill];
-
     });
 
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
@@ -86,16 +86,16 @@
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Saving expectations"];
 
-    [ANDYDataManager performInBackgroundContext:^(NSManagedObjectContext *context) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    DATAStack *dataStack = [self dataStack];
 
+    [dataStack performInNewBackgroundContext:^(NSManagedObjectContext *backgroundContext) {
+        dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error = nil;
-            XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+            XCTAssertThrowsSpecificNamed([backgroundContext hyp_save:&error],
                                          NSException,
                                          HYPSafeSaveBackgroundThreadSavedInMainThreadException);
             if (error) NSLog(@"error: %@", error);
             [expectation fulfill];
-
         });
     }];
 

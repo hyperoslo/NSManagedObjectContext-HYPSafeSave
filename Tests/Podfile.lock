@@ -1,10 +1,10 @@
 PODS:
-  - ANDYDataManager (1.2.2)
+  - DATAStack (2.3)
 
 DEPENDENCIES:
-  - ANDYDataManager
+  - DATAStack
 
 SPEC CHECKSUMS:
-  ANDYDataManager: 90841504e0456c952629b41fe7d4d018e38337f8
+  DATAStack: 82ab490d245462e1b24ff4e828de0bec86c38e9c
 
 COCOAPODS: 0.35.0

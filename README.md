@@ -8,7 +8,7 @@
 When doing `[context save:&error]` warns you about:
 
 - Usage of confinement contexts
-- Main context saved in a background thread
+- Main context saved
 - Background context saved in a main thread
 
 ## Usage
@@ -22,7 +22,9 @@ When doing `[context save:&error]` warns you about:
 **NSManagedObjectContext-HYPSafeSave** is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-`pod 'NSManagedObjectContext-HYPSafeSave'`
+```ruby
+pod 'NSManagedObjectContext-HYPSafeSave', '~> 0.3'
+```
 
 ## Author
 

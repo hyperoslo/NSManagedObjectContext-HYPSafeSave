@@ -209,6 +209,24 @@
     return context;
 }
 
+- (NSManagedObjectContext *)newDisposableMainContext
+{
+    NSBundle *bundle = (self.modelBundle) ?: [NSBundle mainBundle];
+    NSURL *modelURL = [bundle URLForResource:self.modelName withExtension:@"momd"];
+    if (!modelURL) {
+        NSLog(@"Model with model name {%@} not found in bundle {%@}", self.modelName, bundle);
+        abort();
+    }
+
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    context.persistentStoreCoordinator = persistentStoreCoordinator;
+
+    return context;
+}
+
 #pragma mark - Observers
 
 - (void)backgroundContextDidSave:(NSNotification *)backgroundContextNotification

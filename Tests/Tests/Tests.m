@@ -44,7 +44,9 @@
     DATAStack *dataStack = [self dataStack];
 
     NSError *error = nil;
-    XCTAssertNoThrow([dataStack.mainContext hyp_save:&error]);
+    XCTAssertThrowsSpecificNamed([dataStack.mainContext hyp_save:&error],
+                                 NSException,
+                                 HYPSafeSaveNotRecommendedSavingInMainThreadException);
     if (error) NSLog(@"error: %@", error);
 }
 
@@ -74,7 +76,7 @@
         NSError *error = nil;
         XCTAssertThrowsSpecificNamed([dataStack.mainContext hyp_save:&error],
                                      NSException,
-                                     HYPSafeSaveMainThreadSavedInDifferentThreadException);
+                                     HYPSafeSaveNotRecommendedSavingInMainThreadException);
         if (error) NSLog(@"error: %@", error);
         [expectation fulfill];
     });
@@ -100,6 +102,17 @@
     }];
 
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
+}
+
+- (void)testSavingADisposableContext
+{
+    DATAStack *dataStack = [self dataStack];
+
+    NSManagedObjectContext *disposableContext = [dataStack newDisposableMainContext];
+
+    XCTAssertThrowsSpecificNamed([disposableContext hyp_save:nil],
+                                 NSException,
+                                 HYPSafeSaveNotRecommendedSavingInMainThreadException);
 }
 
 @end

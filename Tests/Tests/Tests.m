@@ -33,7 +33,7 @@
     context.persistentStoreCoordinator = [dataStack persistentStoreCoordinator];
 
     NSError *error = nil;
-    XCTAssertThrowsSpecificNamed([context hyp_save:&error],
+    XCTAssertThrowsSpecificNamed([context save:&error],
                                  NSException,
                                  HYPSafeSaveNotRecommendedConcurrencyTypeException);
     if (error) NSLog(@"error: %@", error);
@@ -44,7 +44,7 @@
     DATAStack *dataStack = [self dataStack];
 
     NSError *error = nil;
-    XCTAssertThrowsSpecificNamed([dataStack.mainContext hyp_save:&error],
+    XCTAssertThrowsSpecificNamed([dataStack.mainContext save:&error],
                                  NSException,
                                  HYPSafeSaveNotRecommendedSavingInMainThreadException);
     if (error) NSLog(@"error: %@", error);
@@ -58,7 +58,7 @@
 
     [dataStack performInNewBackgroundContext:^(NSManagedObjectContext *backgroundContext) {
         NSError *error = nil;
-        XCTAssertNoThrow([backgroundContext hyp_save:&error]);
+        XCTAssertNoThrow([backgroundContext save:&error]);
         if (error) NSLog(@"error: %@", error);
         [expectation fulfill];
     }];
@@ -74,7 +74,7 @@
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSError *error = nil;
-        XCTAssertThrowsSpecificNamed([dataStack.mainContext hyp_save:&error],
+        XCTAssertThrowsSpecificNamed([dataStack.mainContext save:&error],
                                      NSException,
                                      HYPSafeSaveNotRecommendedSavingInMainThreadException);
         if (error) NSLog(@"error: %@", error);
@@ -93,7 +93,7 @@
     [dataStack performInNewBackgroundContext:^(NSManagedObjectContext *backgroundContext) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error = nil;
-            XCTAssertThrowsSpecificNamed([backgroundContext hyp_save:&error],
+            XCTAssertThrowsSpecificNamed([backgroundContext save:&error],
                                          NSException,
                                          HYPSafeSaveBackgroundThreadSavedInMainThreadException);
             if (error) NSLog(@"error: %@", error);
@@ -110,7 +110,7 @@
 
     NSManagedObjectContext *disposableContext = [dataStack newDisposableMainContext];
 
-    XCTAssertThrowsSpecificNamed([disposableContext hyp_save:nil],
+    XCTAssertThrowsSpecificNamed([disposableContext save:nil],
                                  NSException,
                                  HYPSafeSaveNotRecommendedSavingInMainThreadException);
 }

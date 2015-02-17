@@ -1,4 +1,5 @@
 #import "NSManagedObjectContext+HYPSafeSave.h"
+#import <objc/objc-runtime.h>
 
 @implementation NSManagedObjectContext (HYPSafeSave)
 
@@ -28,7 +29,40 @@
         }
     }
 #endif
-    return [self save:error];
+    return [self hyp_save:error];
+}
+
++ (void)load
+{
+    [super load];
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleClass:[self class] originalSelector:@selector(save:) swizzledSelector:@selector(hyp_save:) instanceMethod:YES];
+    });
+}
+
++ (void)swizzleClass:(Class)class originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector instanceMethod:(BOOL)instanceMethod
+{
+    if (class) {
+        Method originalMethod;
+        Method swizzledMethod;
+        if (instanceMethod) {
+            originalMethod = class_getInstanceMethod(class, originalSelector);
+            swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+        } else {
+            originalMethod = class_getClassMethod(class, originalSelector);
+            swizzledMethod = class_getClassMethod(class, swizzledSelector);
+        }
+
+        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+
+        if (didAddMethod) {
+            class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    }
 }
 
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = "NSManagedObjectContext-HYPSafeSave"
-s.version          = "0.3"
+s.version          = "0.4"
 s.summary          = "Warns you of unsafe NSManagedObjectContext saves"
 s.description      = <<-DESC
 When doing `[context save:&error]` warns you about:

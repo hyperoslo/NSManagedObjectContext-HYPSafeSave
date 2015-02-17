@@ -14,7 +14,7 @@ When doing `[context save:&error]` warns you about:
 ## Usage
 
 ```objc
-// #import "NSManagedObjectContext+HYPSafeSave.h"
+#import "NSManagedObjectContext+HYPSafeSave.h"
 
 - (BOOL)save:(NSError * __autoreleasing *)error;
 ```

@@ -14,7 +14,9 @@ When doing `[context save:&error]` warns you about:
 ## Usage
 
 ```objc
-- (BOOL)hyp_save:(NSError * __autoreleasing *)error;
+// #import "NSManagedObjectContext+HYPSafeSave.h"
+
+- (BOOL)save:(NSError * __autoreleasing *)error;
 ```
 
 ## Installation
@@ -23,7 +25,7 @@ When doing `[context save:&error]` warns you about:
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'NSManagedObjectContext-HYPSafeSave', '~> 0.3'
+pod 'NSManagedObjectContext-HYPSafeSave', '~> 0.4'
 ```
 
 ## Author

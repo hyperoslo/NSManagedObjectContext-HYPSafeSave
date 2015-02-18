@@ -44,9 +44,7 @@
     DATAStack *dataStack = [self dataStack];
 
     NSError *error = nil;
-    XCTAssertThrowsSpecificNamed([dataStack.mainContext save:&error],
-                                 NSException,
-                                 HYPSafeSaveNotRecommendedSavingInMainThreadException);
+    XCTAssertNoThrow([dataStack.mainContext save:&error]);
     if (error) NSLog(@"error: %@", error);
 }
 
@@ -76,7 +74,7 @@
         NSError *error = nil;
         XCTAssertThrowsSpecificNamed([dataStack.mainContext save:&error],
                                      NSException,
-                                     HYPSafeSaveNotRecommendedSavingInMainThreadException);
+                                     HYPSafeSaveMainThreadSavedInDifferentThreadException);
         if (error) NSLog(@"error: %@", error);
         [expectation fulfill];
     });
@@ -112,7 +110,7 @@
 
     XCTAssertThrowsSpecificNamed([disposableContext save:nil],
                                  NSException,
-                                 HYPSafeSaveNotRecommendedSavingInMainThreadException);
+                                 NSInternalInconsistencyException);
 }
 
 @end

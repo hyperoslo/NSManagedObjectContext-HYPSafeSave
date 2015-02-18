@@ -8,7 +8,7 @@
 When doing `[context save:&error]` warns you about:
 
 - Usage of confinement contexts
-- Main context saved
+- Main context saved in a background thread
 - Background context saved in a main thread
 
 ## Usage

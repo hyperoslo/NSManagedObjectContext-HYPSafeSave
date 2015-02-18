@@ -25,7 +25,7 @@ When doing `[context save:&error]` warns you about:
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'NSManagedObjectContext-HYPSafeSave', '~> 0.4'
+pod 'NSManagedObjectContext-HYPSafeSave', '~> 0.5'
 ```
 
 ## Author
